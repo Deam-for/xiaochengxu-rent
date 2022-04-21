@@ -1,0 +1,112 @@
+page{
+  background-color: #f5f5f5;
+}
+.screen-box {
+  width: 100%;
+  height: 30px;
+  padding-top: 7px;
+  background: #fff;
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+.screen {
+  width: 32%;
+  margin: 0 1%;
+  text-align: center;
+  height: 25px;
+  line-height: 25px;
+  font-size: 13px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.screen-box .active {
+  color: red;
+}
+
+.screen-box .active::after {
+  border: 5px solid transparent;
+  border-top: 5px solid red;
+  width: 0;
+  height: 0;
+  position: absolute;
+  margin-left: 6px;
+  margin-top: 10px;
+  content: '';
+}
+clear-both {
+  clear: both;
+}
+.booklist{
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+}
+.book-img {
+  
+  width: 147rpx;
+  height: 167rpx;
+  box-shadow: -1px -1px 10rpx #bbb;
+  margin-top: 8px;
+  margin-left: 12px;
+}
+.book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 28rpx;
+  color:black;
+  margin-left: 30rpx;
+  margin-top: 8px;
+}
+.house_content {
+  width: 400rpx;
+  /* line-height: 60rpx; */
+  display: block !important;
+  margin-top: 6px;
+  white-space: nowrap;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rent_type{
+  border-radius: 10rpx;
+  color: white;
+  background-color: rgb(108, 105, 252);
+  padding: 6rpx 10rpx 5rpx 10rpx;
+  margin-right: 15rpx;
+  margin-top: 8rpx;
+}
+.button{
+  width: 80rpx;
+  width: 150rpx;
+  margin-right: 25rpx;
+  padding: 20rpx;
+  background-color: rgb(49, 179, 124);
+  border-radius: 15rpx;
+  display: flex;
+  justify-content: center;
+}
+.restrict{
+  display: flex;
+  flex-direction: column;
+}
+.item_bottom{
+  background-color: #ffffff;
+  justify-content: space-around;
+  padding-top: 20rpx;
+  padding-bottom: 15rpx;
+  margin-bottom: 15rpx;
+}
+.item{
+  background-color: #ffffff;
+}
+.tuiguang{
+  background-color: #ffffff;
+  border: 1px solid #26996d;
+}
+.rent_money{
+  margin-top: 15rpx;
+  margin-left: 10rpx;
+}

@@ -1,0 +1,32 @@
+<view class="flex_row top">
+    <picker bindchange="bindpickerchange" value="{{index}}" range="{{array}}">
+      <van-cell-group>
+  <van-field
+    class="top_inputt"
+    value="{{ array[index] }}"
+    placeholder="请选择"
+    label="举报原因"
+    is-link="true"
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+</van-cell-group>
+    </picker>
+  </view>
+  <view class="top">
+    <van-cell-group>
+  <van-field
+    value="{{ message }}"
+    label="补充说明"
+    type="textarea"
+    placeholder="请输入"
+    autosize
+    border="{{ false }}"
+    bind:change="textarea"
+  />
+</van-cell-group>
+  </view>
+  <view class="img_select">
+    <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}"/>
+  </view>
+  <button class="bottom" bindtap="submit">举报</button>

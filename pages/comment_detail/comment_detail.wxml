@@ -1,0 +1,50 @@
+<view class="content">
+  <view class="flex_row content_top">
+    <image src="{{content.avatar_url}}" class="avatar_size avatar img"></image>
+    <view class="flex_column">
+      <view>{{content.nickname}}</view>
+      <view>{{content.create_time}}</view>
+    </view>
+  </view>
+  <view class="content_middle">{{content.content}}</view>
+  <view class="flex_row ">
+    <block wx:for="{{content.pic}}" wx:for-item="index" wx:key="index">
+      <image src="http://127.0.0.1:3000/uploads/{{content.pic[index]}}" class="content_img "></image>
+    </block>
+  </view>
+  <view class="content_bottom">
+    <image src="../../image/location.png" class="small_logo"></image>
+    <text>{{content.location}}</text>
+  </view>
+</view>
+
+<!-- 留言 -->
+<!-- 留言 -->
+<view class="comment">
+<view wx:if="{{!comment.length}}" class="summary">暂时还没有人留言，快来抢沙发吧</view>
+  <block wx:for="{{comment}}" wx:for-item="item" wx:key="index">
+    <view class="{{index>=1?'comment_item':''}} item flex_column">
+      <view class="item_top flex_row" >
+        <image src="{{item.avatar_url}}" class="avatar avatar_size"></image>
+        <view >{{item.nickname}}</view>
+      </view>
+      <view class="contents">{{item.content}}</view>
+    </view>
+  </block>
+</view>
+
+<!-- 底部区域 -->
+<view class="bottom_box  flex_row">
+  <view class="flex_inline bottom_box_collect" bindtap="comment">
+    <input placeholder="评论" class="bottom_input"/>
+  </view>
+  <view class="flex_inline bottom_box_collect" bindtap="collection">
+    <image src="../../image/collectioned.png" class="small_logo" wx:if="{{collection==true}}"></image>
+    <image src="../../image/collect.png" class="small_logo" wx:else></image>
+    <text>收藏</text>
+  </view>
+  <view class="flex_inline bottom_box_collect">
+    <image src="../../image/message.png" class="small_logo"></image>
+    <text>留言</text>
+  </view>
+</view>

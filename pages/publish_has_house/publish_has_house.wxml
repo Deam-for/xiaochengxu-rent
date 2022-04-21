@@ -1,0 +1,14 @@
+<block wx:for="{{rent_content}}" wx:for-item="item" wx:key="id">
+  <view class="flex_column type_select" bindtap="select" data-id="{{item.id}}">
+    <view class="flex_row type_select_item">
+      <image src="{{item.pic}}" class="middle_logo1"></image>
+      <view class="flex_column item_content">
+        <text class="font-big">{{item.title}}</text>
+        <text class="font-small gray item">{{item.content}}</text>
+      </view>
+      <image src="{{item.avaurl}}" class="small_logo1"   wx:if="{{item.sign==0}}"></image>
+      <image src="../../image/check-circle-green.png" class="small_logo1" wx:if="{{item.sign==1}}"></image>
+    </view>
+  </view>
+</block>
+<view class="type_select_button" bindtap="next_select">下一步</view>

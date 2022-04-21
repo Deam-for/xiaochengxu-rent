@@ -1,0 +1,44 @@
+<view>
+  <view class="title">加入的圈子</view>
+  <view class="content flex_row">
+  <view class="item"  bindtap="openDetail" wx:for="{{area_list}}" data-id="{{item.id}}" wx:key="index">
+    <view class="content-item  color{{index}}" >{{item.area}}</view>
+  </view>
+</view>
+</view>
+
+<view>
+  <view>我发布的帖子</view>
+  <view class="cicle_content" >
+  <block wx:for="{{comment}}"wx:for-item="item" wx:key="index">
+    <view  data-id="{{item.id}}"  class="background_color border-radius rent_content" bindtap="comment_detail">
+      <view class="flex_row flex_inline">
+        <view class="house_avatar"><image src="{{item.avatar_url}}" class="avatar_size avatar"></image></view>
+        <view class="flex_column content_userinfo">
+          <view>
+            <text class="font-normal">{{item.nickname}}</text>
+          </view>
+          <view class="font-small">{{item.create_time}}更新</view>
+        </view>
+    </view>
+      <view class="flex_row rent_info">
+        <text class="rent_info">{{item.content}}</text>
+      </view>
+      <view class="flex_row " >
+        <block wx:for="{{item.pic}}" wx:for-item="index" wx:key="index">
+          <image src="http://127.0.0.1:3000/uploads/{{item.pic[index]}}" class="rent_image rent_picture"></image>
+        </block>
+      </view>
+      <view class="rent_location flex_row">
+        <image src="../../image/location.png" class="small_logo"></image>
+        <text class="font-normal rent_location_detailed">{{item.location}}</text>
+        <view class="flex_row comment">
+          <image src="../../image/yidianzan.png" class="small_logo" bindtap="delete_dianzan" data-id="{{index}}" wx:if="{{item.dianzan}}"></image>
+          <image src="../../image/dianzan.png" class="small_logo" bindtap="dianzan" data-id="{{index}}" wx:else></image>
+          <image src="../../image/message.png" class="small_logo"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+</view>

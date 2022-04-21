@@ -1,0 +1,122 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+/* 横线 */
+.line{
+  background-color: gainsboro;
+  height: 1rpx;
+  width: 92%;
+  margin-left: 4%;
+}
+/* 周围距离 */
+.pad10{
+  padding: 10rpx;
+}
+/* 向上间距 */
+.margin_top{
+  margin-top: 50rpx;
+}
+.border-radius{
+  border-radius:30rpx ;
+}
+.flex_column{
+  display: flex;
+  flex-direction: column;
+}
+.flex_row{
+  display: flex;
+  flex-direction: row;
+}
+.flex_inline{
+  display: flex;
+  align-items: center;
+}
+.flex_warp{
+  flex-wrap: wrap;
+}
+/* 背景颜色 */
+.background_color{
+  width: 94%;
+  margin-left: 3%;
+  background-color: #ffffff;
+}
+/* 照片大小 */
+.image_size1{
+  width: 120rpx;
+  height: 120rpx;
+}
+.image_size2{
+  width: 200rpx;
+  height: 200rpx;
+}
+.image_size3{
+  width: 85px;
+  height: 85px;
+}
+/* 小图标尺寸 */
+.small_logo{
+  width: 30rpx;
+  height: 30rpx;
+}
+.small_logo1{
+  width: 60rpx;
+  height: 60rpx;
+}
+.middle_logo1{
+  width: 80rpx;
+  height: 80rpx;
+}
+.middle_logo{
+  width: 100rpx;
+  height: 100rpx;
+}
+.big_logo{
+  width: 120rpx;
+  height: 120rpx;
+}
+/* 头像大小 */
+.avatar_size{
+  width: 108rpx;
+  height: 108rpx;
+}
+.avatar{
+  border-radius: 50%;
+}
+/* 字体 */
+.bold{
+  font-weight: bold;
+}
+.font-small{
+  font-size: 26rpx;
+}
+.font-normal{
+  font-size: 32rpx;
+}
+.font-big{
+  font-size: 34rpx;
+}
+/* 基本颜色 */
+.red{
+  color: red;
+}
+.gray{
+  color: gray;
+}
+.white{
+  color: white;
+}
+/* 按钮 */
+.bottom{
+  border-radius: 30rpx;
+  background: #3bc564;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 30rpx;
+}

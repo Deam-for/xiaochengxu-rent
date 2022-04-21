@@ -1,0 +1,82 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/my/my",
+    "pages/house_detailed/house_detailed",
+    "pages/publish/publish",
+    "pages/publish_has_house/publish_has_house",
+    "pages/publish_detailed/publish_detailed",
+    "pages/example/example",
+    "pages/collection/collection",
+    "pages/city_select/city_select",
+    "pages/users_info/users_info",
+    "pages/select_info/select_info",
+    "pages/publish_find/publish_find",
+    "pages/publish_find_detail/publish_find_detail",
+    "pages/cicle/cicle",
+    "pages/cicle_detail/cicle_detail",
+    "pages/cicle_pbulish/cicle_publish",
+    "pages/comment_detail/comment_detail",
+    "pages/publish_comment/publish_comment",
+    "pages/search/search",
+    "pages/publish_update/publish_update",
+    "pages/report/report",
+    "pages/my_cicle/my_cicle",
+    "pages/promote/promote"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "./image/home.png",
+      "selectedIconPath": "./image/home.png"
+    },{
+      "pagePath": "pages/cicle/cicle",
+      "text": "圈子",
+      "iconPath": "./image/cicle.png",
+      "selectedIconPath": "./image/cicle.png"
+    },
+    {
+      "pagePath": "pages/publish_has_house/publish_has_house",
+      "text": "发布",
+      "iconPath":"./image/publish1.png",
+      "selectedIconPath": "./image/publish1.png"
+    }, {
+      "pagePath": "pages/my/my",
+      "text": "我的",
+      "iconPath":"./image/my.png",
+      "selectedIconPath": "./image/my.png"
+    }]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-uploader": "@vant/weapp/uploader/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-index-bar": "@vant/weapp/index-bar/index",
+    "van-index-anchor": "@vant/weapp/index-anchor/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-nav-bar": "@vant/weapp/nav-bar/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-share-sheet": "@vant/weapp/share-sheet/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index",
+    "van-picker": "@vant/weapp/picker/index"
+  }
+}

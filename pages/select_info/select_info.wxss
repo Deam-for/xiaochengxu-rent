@@ -1,0 +1,39 @@
+.booklist{
+  display: flex;
+  flex-direction: row;
+}
+.book-img {
+  
+  width: 147rpx;
+  height: 167rpx;
+  box-shadow: -1px -1px 10rpx #bbb;
+  margin-top: 8px;
+  margin-left: 12px;
+}
+.book-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 28rpx;
+  color:black;
+  margin-left: 30rpx;
+  margin-top: 8px;
+}
+.house_content {
+  width: 400rpx;
+  /* line-height: 60rpx; */
+  display: block !important;
+  margin-top: 6px;
+  white-space: nowrap;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rent_type{
+  border-radius: 10rpx;
+  color: white;
+  background-color: rgb(108, 105, 252);
+  padding: 6rpx 10rpx 0rpx 10rpx;
+  margin-right: 15rpx;
+  margin-top: 8rpx;
+}

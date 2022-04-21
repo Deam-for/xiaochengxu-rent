@@ -1,0 +1,9 @@
+
+<view class="content">
+  <view class="item">
+    <image src="{{content.avatar_url}}" class="avatar_size avatar"></image>
+    <view>{{content.nickname}}</view>
+  </view>
+  <textarea class="text" placeholder="给{{content.nickname}}留言" bindinput="content" value="{{textarea}}"></textarea>
+  <view class="button"><textarea class="bottom" bindtap="submit">发送</textarea></view>
+</view>

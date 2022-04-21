@@ -1,0 +1,61 @@
+<view class="publish_detailed">
+  <van-cell-group>
+  <van-field
+    value="{{ content.title }}"
+    label="标题"
+    placeholder="请简述房子特点"
+    error-message="{{msg.title}}"
+    type="text"
+    bind:change="title"
+  />
+  <van-field
+    value="{{ content.money }}"
+    label="租金"
+    placeholder="最多5位数"
+    error-message=""
+    error-message="{{msg.rent}}"
+    type="number"
+    bind:input="money"
+  />
+  <van-field
+    value="{{content.location}}"
+    label="位置"
+    placeholder="选择房子所在的位置"
+    error-message="{{msg.location}}"
+    type="text"
+    bind:click-input="openlocation"
+  />
+  <van-field
+    value="{{ content.restricts}}"
+    label="限制"
+    placeholder="请选择限制条件"
+    type="text"
+    bind:click-input="restrict"
+  />
+  <van-field
+    value="{{content.decrible}}"
+    label="描述"
+    type="textarea"
+    placeholder="详细描述，非必填"
+    error-message="{{msg.decrible}}"
+    autosize
+    bind:input="decrible"
+    border="{{ false }}"
+  />
+  </van-cell-group>
+  <view class="flex_row flex_warp">
+    <view class="flex_row old_pic" wx:for="{{content.pic}}"  wx:for-item="index" wx:key="index">
+      <image src="http://127.0.0.1:3000/uploads/{{content.pic[index]}}" class="image_size3"></image>
+      <view class="img" bindtap="delete_pic" data-id="{{index}}">x</view>
+    </view>
+    <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="5" class="old_pic"/>
+  </view>
+  <van-toast id="van-toast" />
+</view>
+<van-action-sheet
+  show="{{ show }}"
+  actions="{{ restrict }}"
+  bind:close="onClose"
+  bind:select="onSelect"
+/>
+<button bindtap="publish" class="bottom">修改</button>

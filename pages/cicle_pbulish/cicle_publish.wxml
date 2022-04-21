@@ -1,0 +1,39 @@
+<view class="flex_row top">
+    <!-- <text>限制</text> -->
+    <picker bindchange="bindpickerchange" value="{{index}}" range="{{array}}">
+      <!-- <view class="item_input">
+        {{array[index]}}
+      </view> -->
+      <van-cell-group>
+  <van-field
+    class="top_inputt"
+    value="{{ array[index] }}"
+    placeholder="请选择"
+    label="所属圈子"
+    is-link="true"
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+</van-cell-group>
+    </picker>
+  </view>
+  <view class="top">
+    <van-cell-group>
+  <van-field
+    value="{{ message }}"
+    label="留言"
+    type="textarea"
+    placeholder="请输入留言"
+    autosize
+    border="{{ false }}"
+    bind:change="textarea"
+  />
+</van-cell-group>
+  </view>
+  <view class="img_select">
+    <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}"/>
+  </view>
+  <view class="top">
+    <van-cell title="所在位置(可选)" is-link value="{{content.location}}"  bindtap="getlocation"/>
+  </view>
+  <button class="bottom" bindtap="submit">发布</button>

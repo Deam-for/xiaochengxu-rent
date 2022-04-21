@@ -1,0 +1,8 @@
+<view class="has_house flex_inline" bindtap="goto_has_house">
+  <image src="../../image/home.png" class="small_logo"></image>
+  <text>我有房</text>
+</view>
+<view class="not_house flex_inline" bindtap="goto_find">
+  <image src="../../image/my.png" class="small_logo"></image>
+  <text>我没房</text>
+</view>

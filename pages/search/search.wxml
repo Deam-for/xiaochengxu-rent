@@ -1,0 +1,39 @@
+<viwe class="flex_row flex_inline search">
+  <view class="city_select" bindtap="onSearch">{{location}}</view>
+  <van-search
+  value="{{ value }}"
+  placeholder="请输入搜索关键词"
+  focus="true"
+  use-action-slot
+  bind:click-input="onclick"
+  bind:change="onChange"
+  style="width: 600rpx;"
+>
+  <view slot="action" bind:tap="onClick">搜索</view>
+</van-search>
+</viwe>
+<view class="tuijian" wx:if="{{tuijian}}">
+  <block wx:for="{{suggestion}}" wx:key="index">
+    <view bindtap="openThis" data-longitude="{{item.longitude}}" data-latitude="{{item.latitude}}"  id="{{index}}" class="tuijian_item">{{item.title}}</view>
+  </block>
+</view>
+<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" 
+          class="list" bindscrolltolower="bindDownLoad" bindscrolltoupper="topLoad"  bindscroll="scroll" wx:else>
+    <view class="booklist" wx:for="{{house_info}}" wx:for-item="item" wx:key="item" data-id="{{item.id}}" catchtap="house_detail">
+      <image  class="book-img book-empty" src="http://127.0.0.1:3000/uploads/{{item.pic}}"></image>
+      <view class="book-info">
+        <view class="flex_row flex_inline">
+          <!-- <view class="rent_type font-small">转租</view> -->
+          <text class="house_content">{{item.title}}</text>
+        </view>
+        <view class="flex_row flex_inline">
+          <image src="../../image/location.png" class="small_logo"></image>
+          <text class="house_content">{{item.location}}</text>
+        </view>
+        <view class="flex_row" style="justify-content: space-around;">
+          <text class="red">{{item.money}}元/月</text>
+          <text>{{item.distance}}公里</text>
+        </view>
+      </view>
+  </view>
+</scroll-view>

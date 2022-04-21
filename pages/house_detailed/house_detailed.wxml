@@ -1,0 +1,92 @@
+<view class="flex_column house_detail">
+  <view class="flex_row flex_inline">
+    <view class="font-small rent_type">{{house_info.type}}</view>
+    <view class="rent_title ">{{house_info.title}}</view>
+  </view>
+  <view class="flex_row flex_inline">
+    <view class="pad10"><image src="{{house_info.avatar_url}}" class="avatar_size  avatar"></image></view>
+    <view class="flex_column content_userinfo">
+      <view>
+        <text class="font-normal">{{house_info.nickname}}</text>
+        <image src="../../image/woman.png" class="small_logo"></image>
+      </view>
+      <view class="font-small house_rent_time">{{house_info.create_time}}更新</view>
+    </view>
+    <view bindtap="report">
+      <image src="../../image/alert.png" class="small_logo"></image>
+      <text>举报</text>
+    </view>
+  </view>
+  <view class="house_info flex_row">
+    <view class="flex_column">
+      <view class="flex_column house_info_item">
+        <text class="font-normal">关于我</text>
+        <text>{{house_info.gender==0?"男":"女"}}.{{house_info.age}}.{{house_info.constellatory}}.{{house_info.work}}</text>
+      </view>
+      <view class="flex_column house_info_item">
+        <text class="font-normal">租金</text>
+        <text>{{house_info.money}} 元/月</text>
+      </view>
+      <view class="flex_column house_info_item">
+        <text class="font-normal">性别限制</text>
+        <text>{{house_info.restricts}}</text>
+      </view>
+      <view class="flex_column house_info_item">
+        <text class="font-normal">位置(点击可查看地图)</text>
+        <view>
+          <image src="../../image/location.png" class="small_logo"></image>
+          <text>{{house_info.location}}</text>
+        </view>
+      </view>
+    </view>
+    <image src="../../image/map.png" class="avatar_size avatar pic_locaion" bindtap="openlocation"></image>
+  </view>
+  <text class="house_info_content font-big">{{house_info.decrible}}</text>
+  <view class="house_info_image">
+    <block wx:for="{{house_info.pic}}" wx:for-item="index" wx:key="index">
+          <image src="http://127.0.0.1:3000/uploads/{{house_info.pic[index]}}" class="image_size2"></image>
+    </block>
+  </view>
+</view>
+
+<!-- 留言 -->
+<view class="liuyan">留言</view>
+<view class="comment">
+<view wx:if="{{!comment.length}}" class="summary">暂时还没有人留言，快来抢沙发吧</view>
+  <block wx:for="{{comment}}" wx:for-item="item" wx:key="index">
+    <view class="{{index>=1?'comment_item':''}} item flex_column">
+      <view class="item_top flex_row" >
+        <image src="{{item.avatar_url}}" class="avatar avatar_size"></image>
+        <view >{{item.nickname}}</view>
+      </view>
+      <view class="contents">{{item.content}}</view>
+    </view>
+  </block>
+</view>
+<view class="blankness"></view>
+
+<!-- 底部区域 -->
+<view class="bottom_box  flex_row">
+  <view class="flex_inline bottom_box_collect" bindtap="collection">
+    <image src="../../image/collectioned.png" class="small_logo" wx:if="{{collection==true}}"></image>
+    <image src="../../image/collect.png" class="small_logo" wx:else></image>
+    <text>收藏</text>
+  </view>
+  <view class="flex_inline bottom_box_collect" bindtap="publish_comment">
+    <image src="../../image/message.png" class="small_logo"></image>
+    <text>留言</text>
+  </view>
+  <view class="bottom_content flex_row">
+    <button class="bottom_button" bindtap="relation_type">联系ta</button>
+  </view>
+</view>
+<van-action-sheet
+  show="{{ show }}"
+  actions="{{ actions }}"
+  bind:close="onClose"
+  bind:select="onSelect"
+/>
+<van-dialog id="van-dialog" />
+<!-- <van-action-sheet show="{{ schedule }}" bind:close="onClose" bind:getuserinfo="onGetUserInfo">
+  <van-picker show-toolbar columns="{{ columns }}" title="请选择预约时间" bind:change="onChange" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-action-sheet> -->

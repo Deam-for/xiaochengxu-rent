@@ -1,0 +1,76 @@
+<view class="content">
+  <view class="top">
+    <image src="../../image/13.jpg" class="top-img"></image>
+    <view  class="top_content">
+      <view class="content-item">{{title}}</view>
+      <view class="text">总浏览量:{{city_area.view_num}} | 圈友数:{{city_area.join_num}}</view>
+    </view>
+  </view>
+  <view class="jianjie flex_row">
+    <view class="flex_column">
+      <image src="../../image/jianjie.png" class="small_logo1"></image>
+      <view>简介</view>
+    </view>
+    <view class="flex_column" bindtap="join">
+      <image src="../../image/joined.png" wx:if="{{thumbs}}" class="small_logo1"></image>
+      <image src="../../image/join.png" class="small_logo1" wx:else></image>
+      <view wx:if="{{thumbs}}">已加入</view>
+      <view wx:else>加入</view>
+    </view>
+    <view class="flex_column" bindtap="onshare">
+      <image src="../../image/share.png" class="small_logo1"></image>
+      <view>分享</view>
+    </view>
+  </view>
+  <view class="comment">
+    <view class="item">
+      
+    </view>
+  </view>
+</view>
+
+<view class="cicle_content" wx:if="{{sign}}">
+  <block wx:for="{{comment}}"wx:for-item="item" wx:key="index">
+    <view  data-id="{{item.id}}"  class="background_color margin_top border-radius rent_content" bindtap="comment_detail">
+      <view class="flex_row flex_inline">
+        <view class="house_avatar"><image src="{{item.avatar_url}}" class="avatar_size avatar"></image></view>
+        <view class="flex_column content_userinfo">
+          <view>
+            <text class="font-normal">{{item.nickname}}</text>
+          </view>
+          <view class="font-small">{{item.create_time}}更新</view>
+        </view>
+    </view>
+      <view class="flex_row rent_info">
+        <text class="rent_info">{{item.content}}</text>
+      </view>
+      <view class="flex_row " >
+        <block wx:for="{{item.pic}}" wx:for-item="index" wx:key="index">
+          <image src="http://127.0.0.1:3000/uploads/{{item.pic[index]}}" class="rent_image rent_picture"></image>
+        </block>
+      </view>
+      <view class="rent_location flex_row">
+        <image src="../../image/location.png" class="small_logo"></image>
+        <text class="font-normal rent_location_detailed">{{item.location}}</text>
+        <view class="flex_row comment">
+          <image src="../../image/yidianzan.png" class="small_logo" bindtap="delete_dianzan" data-id="{{index}}" wx:if="{{item.dianzan}}"></image>
+          <image src="../../image/dianzan.png" class="small_logo" bindtap="dianzan" data-id="{{index}}" wx:else></image>
+          <image src="../../image/message.png" class="small_logo"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="cicle_content no_comment" wx:else>暂时还有人发表帖子，快来当首发吧</view>
+<van-share-sheet
+  show="{{ showShare }}"
+  title="立即分享给好友"
+  options="{{ options }}"
+  bind:select="onSelect"
+  bind:close="onClose"
+/>
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item icon="search" bindtap="openpbulish">发布</van-tabbar-item>
+  <van-tabbar-item icon="setting-o">我的</van-tabbar-item>
+</van-tabbar>

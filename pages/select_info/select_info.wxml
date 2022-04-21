@@ -1,0 +1,19 @@
+
+<view class="restrict">
+  <view class="booklist" wx:for="{{classify_content}}" wx:for-item="item" wx:key="id" data-id="{{item.id}}" catchtap="house_detail">
+    <image  class="book-img book-empty" src="http://127.0.0.1:3000/uploads/{{item.pic}}"></image>
+    <view class="book-info">
+      <view class="flex_row flex_inline">
+        <!-- <view class="rent_type font-small">转租</view> -->
+        <text class="house_content">{{item.title}}</text>
+      </view>
+      <view class="flex_row flex_inline">
+        <image src="../../image/location.png" class="small_logo"></image>
+        <text class="house_content">{{item.location}}</text>
+      </view>
+      <view>
+        <text class="red">{{item.money}}元/月</text>
+      </view>
+    </view>
+</view>
+</view>

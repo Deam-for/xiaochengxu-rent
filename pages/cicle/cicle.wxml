@@ -1,0 +1,14 @@
+<view class="flex_row " style="width: 100%;justify-content: space-around;">
+  <van-button color="linear-gradient(to right, #0385f5, #17b4bd);" size="large" style="width: 45%;" bindtap="distirct">
+    按商圈
+  </van-button>
+  <van-button color="linear-gradient(to bottom right, #eebd89, #d13abd)" size="large" style="width: 45%;" bindtap="area">
+    按区域
+  </van-button>
+</view>
+<view class="content flex_row">
+  <view class="item"  bindtap="openDetail" wx:for="{{area_list}}" data-id="{{item.id}}" wx:key="index">
+    <view class="content-item  color{{index}}" >{{item.title}}</view>
+    <view class="item-text">{{item.area}}</view>
+  </view>
+</view>

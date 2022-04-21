@@ -1,0 +1,48 @@
+<view class="user_info">
+  <view class="flex_row item">
+    <text>性别</text>
+    <picker bindchange="genderpickerchange" value="{{index[0]}}" range="{{gender}}">
+    <view wx:if="{{array[0]==0}}" class="item_input">请选择信息</view>
+      <view class="item_input" wx:else>
+        {{array[0]}}
+      </view>
+    </picker>
+  </view>
+  <view class="flex_row item">
+    <text>年龄</text>
+    <picker bindchange="agepickerchange" value="{{index[1]}}" range="{{age}}">
+      <view wx:if="{{array[1]==0}}" class="item_input">请选择年龄</view>
+      <view class="item_input" wx:else>
+        {{array[1]}}
+      </view>
+    </picker>
+  </view>
+  <view class="flex_row item">
+    <text>职业</text>
+    <picker bindchange="profession_pickerchange" value="{{index[2]}}" range="{{profession}}">
+      <view wx:if="{{array[2]==0}}" class="item_input">请选择职业</view>
+      <view class="item_input" wx:else>
+        {{array[2]}}
+      </view>
+    </picker>
+  </view>
+  <view class="flex_row item">
+    <text>星座</text>
+    <picker bindchange="constellatory_pickerchange" value="{{index[3]}}" range="{{constellatory}}">
+      <view wx:if="{{array[3]==0}}" class="item_input">请选择星座</view>
+      <view class="item_input" wx:else>
+        {{array[3]}}
+      </view>
+    </picker>
+  </view>
+  <view class="flex_row item">
+    <text>微信号</text>
+    <input placeholder="详细描述，非必填"  class="item_input" value="{{array[4]}}" bindinput="weixin"/>
+  </view>
+  <view class="flex_row item">
+    <text>电话</text>
+    <input placeholder="详细描述，非必填"  class="item_input" value="{{array[5]}}" bindinput="phone"/>
+  </view>
+</view>
+
+<button bindtap="submit" class="bottom">保存</button>

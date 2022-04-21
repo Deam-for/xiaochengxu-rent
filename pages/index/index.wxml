@@ -1,0 +1,73 @@
+<!-- 顶部搜索框 -->
+<viwe class="flex_row flex_inline search">
+  <view class="city_select" bindtap="onSearch">{{location}}</view>
+  <van-search
+  value="{{ value }}"
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  bind:click-input="onChange"
+  bind:change="onChange"
+  style="width: 600rpx;"
+>
+  <view slot="action" bind:tap="onClick">搜索</view>
+</van-search>
+</viwe>
+<!-- 九宫格 -->
+<view class="catagory_root flex_row">
+  <view class="flex_column catagory_item">
+    <image src="../../image/zhaoshiyou.png" class="catagory_item_image" bindtap="onClassify" data-type="find_roommate"></image>
+    <text>找室友</text>
+  </view>
+  <view class="flex_column catagory_item">
+    <image src="../../image/zhuanzu.png" class="catagory_item_image" bindtap="onClassify" data-type="attorn"></image>
+    <text>转租</text>
+  </view>
+  <view class="flex_column catagory_item" bindtap="onClassify" data-type="landlord">
+    <image src="../../image/zhengzu.png" class="catagory_item_image" ></image>
+    <text>房东直租</text>
+  </view>
+</view>
+<!-- 专属推荐 -->
+<view class="index_recommend background_color">
+  <swiper  indicator-dots="true"autoplay="true" interval="3000" duration="1000">
+    <block wx:for="{{banner}}" wx:for-item="item"  wx:key="index">
+      <swiper-item>
+        <image src="{{item.img_url}}" class="img-item"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<!-- 热门推荐 -->
+<view class="background_color margin_top border-radius rent_content">
+  <block wx:for="{{house_info}}"wx:for-item="item" wx:key="index">
+    <view bindtap="house_detail" data-id="{{item.id}}">
+      <view class="flex_row flex_inline">
+        <view class="house_avatar"><image src="{{item.avatar_url}}" class="avatar_size avatar"></image></view>
+        <view class="flex_column content_userinfo">
+          <view>
+            <text class="font-normal">{{item.nickname}}</text>
+            <image src="../../image/woman.png" class="small_logo"></image>
+          </view>
+          <view class="font-small">{{item.create_time}}更新</view>
+        </view>
+        <view class="rent_money font-normal">租金  {{item.money}}元/月</view>
+    </view>
+      <view class="flex_row rent_info">
+        <view class="rent_type font-small">{{item.type}}</view>
+        <text class="rent_info">{{item.title}}</text>
+      </view>
+      <view class="flex_row " >
+        <block wx:for="{{item.pic}}" wx:for-item="index" wx:key="index">
+          <image src="http://127.0.0.1:3000/uploads/{{item.pic[index]}}" class="rent_image rent_picture"></image>
+        </block>
+      </view>
+      <view class="rent_location flex_row">
+        <image src="../../image/location.png" class="small_logo"></image>
+        <text class="font-normal rent_location_detailed">{{item.address}}</text>
+        <text class="font-normal rent_location_simple">{{item.district}}</text>
+      </view>
+    </view>
+  <view class="line"></view>
+  </block>
+</view>
+<van-dialog id="van-dialog"/>

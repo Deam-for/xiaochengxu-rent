@@ -1,0 +1,34 @@
+<!--pages/city/city.wxml-->
+<!-- 头部定位 -->
+<view class="header">
+  <view class="left-side">当前定位：{{cityName}}</view>
+  <view wx:if="{{getAddressFlag}}" class="right-side" bindtap="getLocation">定位 <text class="iconfont icon-address"></text></view>
+  <view wx:else class="right-side" bindtap="getLocation" bindtap="getAuthorization">定位 <text class="iconfont icon-address"></text></view>
+</view>
+<!-- 城市列表 -->
+<view class="list-city">
+  <scroll-view scroll-y="true" style="height:100%;"  scroll-into-view="{{scrollTopId}}" scroll-with-animation="true" enable-back-to-top="true">
+    <view class="city-block">
+      <view class="first-character" id='HOT'>热门城市</view>
+      <view class="hot-city-box">
+        <view class="hot-item" bindtap="selCity" data-val="北京">北京市</view>
+        <view class="hot-item" bindtap="selCity" data-val="上海">上海市</view>
+        <view class="hot-item" bindtap="selCity" data-val="广州">广州市</view>
+        <view class="hot-item" bindtap="selCity" data-val="杭州">杭州市</view>
+        <view class="hot-item" bindtap="selCity" data-val="成都">成都市</view>
+        <view class="hot-item" bindtap="selCity" data-val="沈阳">沈阳市</view>
+      </view>
+    </view>
+    <view class="city-block" wx:for="{{citys}}" wx:key="index">
+      <view class="first-character" id='{{item.cityName}}' wx:key="*this" wx:if="{{item.cityPinYin.length == 1}}">{{item.cityName}}</view>
+      <view wx:else class="city-item" wx:key="*this" bindtap="selCity" data-val="{{item.cityName}}">{{item.cityName}}市</view>
+    </view>
+  </scroll-view>
+</view>
+<!-- A-Z字母列表 -->
+<view class="a-z"  catchtouchmove="tMove">
+  <view class="iconfont icon-hot" id="HOT" bindtouchstart="getPy" bindtouchend="setPy"></view>
+  <view bindtouchstart="getPy" bindtouchend="setPy" class="first-letter" wx:for="{{cityAZ}}" wx:key="*this" id="{{item.cityName}}">{{item.cityName}}</view>
+</view>
+
+<view class="show-letter" hidden="{{hidden}}">{{firstLetter}}</view>

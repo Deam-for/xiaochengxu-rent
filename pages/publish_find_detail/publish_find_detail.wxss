@@ -1,0 +1,15 @@
+page{
+  background-color: #ffffff;
+}
+.publish_detailed{
+  padding: 20rpx;
+}
+.item{
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid gainsboro;
+}
+.item_input{
+  margin-left: 60rpx;
+  flex: 3;
+}

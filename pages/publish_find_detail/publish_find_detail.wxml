@@ -1,0 +1,33 @@
+<view class="publish_detailed">
+  <view class="flex_row item">
+    <tetx>标题</tetx>
+    <input placeholder="简述下理想的室友和房子" type="text" class="item_input" value="{{content.title}}" bindinput="title"/>
+  </view>
+  <view class="flex_row item">
+    <tetx>租金</tetx>
+    <input placeholder="理想的预算值" type="number" class="item_input" value="{{content.money}}" bindinput="money"/>
+    <text>元/月</text>
+  </view>
+  <view class="flex_row item">
+    <text>位置</text>
+    <input placeholder="选择理想房子所在的位置" bindtap="openlocation" class="item_input" value="{{content.location}}"/>
+  </view>
+  <view class="flex_row item">
+    <text>限制</text>
+    <picker bindchange="bindpickerchange" value="{{index}}" range="{{array}}" >
+      <input class="item_input" value="{{array[index]}}" placeholder="请选择对室友性别的限制"/>
+        
+    </picker>
+  </view>
+  <view class="flex_row item">
+    <text>描述</text>
+    <input placeholder="详细描述，非必填"  class="item_input" value="{{content.decrible}}" bindinput="decrible"/>
+  </view>
+  <!-- <view class="flex_column">
+    <image src="../../image/add_img.png" class="middle_logo1"></image>
+    <text>添加图片</text>
+  </view> -->
+</view>
+<van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" deletable="{{ true }}" max-count="5"/>
+<van-toast id="van-toast" />
+<button bindtap="publish">立即发布</button>

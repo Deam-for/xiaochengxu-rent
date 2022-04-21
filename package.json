@@ -1,0 +1,17 @@
+{
+  "name": "city_join_rent",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vant/area-data": "^1.2.2",
+    "@vant/weapp": "^1.10.2",
+    "vant-weapp": "^0.5.29"
+  }
+}

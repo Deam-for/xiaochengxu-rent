@@ -1,0 +1,51 @@
+<!-- 头部 -->
+<view class="my_top">
+  <view class="my_userinfo" wx:if="{{nickName}}">
+    <view class="avatar">
+      <image src="{{avatarUrl}}" class="my_avatar"  ></image>
+    </view>
+    <view class="flex_column my_name">
+      <text>{{nickName}}</text>
+      <text>去认证</text>
+    </view>
+    <view bindtap="users_info"><image src="../../image/alter.png" class="my_alter"></image></view>
+  </view>
+  <view wx:else class="my_login" bindtap="mylogin">立即登录</view>
+  <view class=" my_record">
+    <view class="flex_column" bindtap="open_publish">
+      <image src="../../image/my_publish.png"></image>
+      <text>我发布的</text>
+    </view>
+    <view class="flex_column" bindtap="open_collection">
+      <image src="../../image/my_collection.png"></image>
+      <text>我收藏的</text>
+    </view>
+    <view class="flex_column" bindtap="remove_house">
+      <image src="../../image/my_xiajia.png"></image>
+      <text>已下架</text>
+    </view>
+  </view>
+  <view class="my_setting">
+    <view bindtap="my_cicle">
+      <text>我的圈子</text>
+      <image src="../../image/ringht-arrow.png"></image>
+    </view>
+    <view class="line"></view>
+    <view>
+      <text>预约看房</text>
+      <image src="../../image/ringht-arrow.png"></image>
+    </view>
+    <view class="line"></view>
+    <view>
+      <text>联系我们</text>
+      <image src="../../image/ringht-arrow.png"></image>
+    </view>
+    <view class="line"></view>
+    <view>
+      <text>反馈问题</text>
+      <image src="../../image/ringht-arrow.png"></image>
+    </view>
+  </view>
+</view>
+
+<button class="margin_top bottom" bindtap="user_quit">退出登录</button>

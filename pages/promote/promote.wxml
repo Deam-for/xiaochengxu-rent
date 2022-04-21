@@ -1,0 +1,32 @@
+<view >
+  <view class="booklist" wx:for="{{content}}" wx:for-item="item" wx:key="id" data-id="{{item.id}}" catchtap="viewhouseDetail">
+    <image class="book-img book-empty" src="http://127.0.0.1:3000/uploads/{{item.pic}}"></image>
+    <view class="book-info">
+      <view class="flex_row flex_inline">
+        <view class="rent_type font-small">转租</view>
+        <text class="house_content">{{item.title}}</text>
+      </view>
+      <view class="flex_row flex_inline">
+        <view class="flex_column">
+          <view class="flex_row flex_inline">
+            <image src="../../image/location.png" class="small_logo"></image>
+            <text class="house_content">{{item.district+item.location}}</text>
+          </view>
+          <view >
+            <text class="red">{{item.money}}元/月</text>
+          </view>
+        </view >
+        <view class="button"  wx:if="{{activeNum==1}}" catchtap="remove_house" data-id="{{item.id}}">下架</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="flex_row item">
+    <tetx>标题</tetx>
+    <input placeholder="请输入图片标题" type="text" class="item_input" value="{{title}}" bindinput="title"/>
+  </view>
+<view class="upload_title">请选择上传图片</view>
+<view class="upload_pic">
+  <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" max-count="1"/>
+</view>
+<button class="bottom" bindtap="submit">上传</button>

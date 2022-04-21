@@ -1,0 +1,36 @@
+page{
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+.publish_detailed{
+  padding: 20rpx;
+}
+.item{
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid gainsboro;
+}
+.item_input{
+  margin-left: 60rpx;
+  flex: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.old_pic{
+  margin: 10rpx 50rpx 0 0;
+}
+.img{
+  background-color: black;
+  font-size: x-small;
+  opacity: 0.7;
+  color: white;
+  width: 30rpx;
+  height: 30rpx;
+  padding-left: 15rpx;
+  padding-bottom: 6rpx;
+  box-sizing: border-box;
+  border-bottom-left-radius:30rpx;
+  margin-left: -30rpx;
+}
