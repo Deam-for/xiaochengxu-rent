@@ -6,7 +6,7 @@
     </view>
     <view class="flex_column my_name">
       <text>{{nickName}}</text>
-      <text>去认证</text>
+      <!-- <text>去认证</text> -->
     </view>
     <view bindtap="users_info"><image src="../../image/alter.png" class="my_alter"></image></view>
   </view>
@@ -19,6 +19,10 @@
     <view class="flex_column" bindtap="open_collection">
       <image src="../../image/my_collection.png"></image>
       <text>我收藏的</text>
+    </view>
+    <view class="flex_column" bindtap="open_fail">
+      <image src="../../image/shenhefail.png"></image>
+      <text>审核失败</text>
     </view>
     <view class="flex_column" bindtap="remove_house">
       <image src="../../image/my_xiajia.png"></image>
@@ -47,5 +51,5 @@
     </view>
   </view>
 </view>
-
-<button class="margin_top bottom" bindtap="user_quit">退出登录</button>
+<van-dialog id="van-dialog" />
+<button class="margin_top bottom" bindtap="user_quit" wx:if="{{nickName}}">退出登录</button>

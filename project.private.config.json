@@ -71,6 +71,41 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/cicle_detail/cicle_detail",
+          "query": "id=6",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/comment_detail/comment_detail",
+          "query": "id=1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/cicle_detail/cicle_detail",
+          "query": "id=6",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/collection/collection",
+          "query": "type=shenhefail",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/collection/collection",
+          "query": "type=publish",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
@@ -84,7 +119,7 @@
     "checkInvalidKey": true,
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": false,
+    "useMultiFrameRuntime": true,
     "showES6CompileOption": false,
     "useStaticServer": true
   },

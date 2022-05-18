@@ -1,3 +1,4 @@
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 Page({
   data:{
     rent_content:[
@@ -6,7 +7,7 @@ Page({
       {id:2,title:'房东直租',content:'需上传房产证或购房合同',avaurl:'../../image/check-circle-gray.png',sign:0,pic:'../../image/zhengzu.png'}
     ],
     num:[],
-    type:['找室友','转租','直租'],
+    type:['找室友','转租','房东直租'],
     id:''
   },
   onLoad(){
@@ -29,8 +30,24 @@ Page({
     })
   },
   next_select(){
-    wx.navigateTo({
+    if(wx.getStorageSync('_3rd_session')){
+      wx.navigateTo({
       url: '../publish_detailed/publish_detailed?type='+this.data.id,
     })
+    }else{
+      Dialog.confirm({
+        message: '请先进行登录',
+        confirmButtonText:'去登录',
+      })
+        .then(() => {
+          wx.switchTab({
+            url: '../my/my',
+          })
+        })
+        .catch(() => {
+          // on cancel
+        });
+    }
+    
   }
 })

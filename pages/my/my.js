@@ -1,5 +1,6 @@
 // index.js
 // 获取应用实例
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 const app = getApp()
 
 Page({
@@ -40,13 +41,20 @@ Page({
                     // },
                 success(res) {
                     //将登录凭证_3rd_session存入缓存
-                    that.setData({
-                      avatarUrl:userinfo.avatarUrl,
-                      nickName:userinfo.nickName
-                    })
-                    wx.setStorageSync("_3rd_session", res.data)
-                    wx.setStorageSync('avatarUrl', userinfo.avatarUrl);
-                    wx.setStorageSync('nickName', userinfo.nickName)
+                    if(res.data.msg==200){
+                      that.setData({
+                        avatarUrl:userinfo.avatarUrl,
+                        nickName:userinfo.nickName
+                      })
+                      wx.setStorageSync("_3rd_session", res.data.a)
+                      wx.setStorageSync('avatarUrl', userinfo.avatarUrl);
+                      wx.setStorageSync('nickName', userinfo.nickName)
+                    }else{
+                      wx.showToast({
+                        title: res.data.msg,
+                        icon:'error'
+                      })
+                    }
                 }
           })
         }
@@ -55,29 +63,124 @@ Page({
     })
   },
   open_collection(){
-    wx.navigateTo({
-      url: '../collection/collection?type='+'collection',
+    if(wx.getStorageSync('_3rd_session')){
+      wx.navigateTo({
+        url: '../collection/collection?type='+'collection',
     })
+    }else{
+      Dialog.confirm({
+        message: '请先进行登录',
+        confirmButtonText:'去登录',
+      })
+        .then(() => {
+          wx.switchTab({
+            url: '../my/my',
+          })
+        })
+        .catch(() => {
+          // on cancel
+        });
+    }
   },
   open_publish(){
-    wx.navigateTo({
-      url: '../collection/collection?type='+'publish',
+    if(wx.getStorageSync('_3rd_session')){
+      wx.navigateTo({
+        url: '../collection/collection?type='+'publish',
     })
+    }else{
+      Dialog.confirm({
+        message: '请先进行登录',
+        confirmButtonText:'去登录',
+      })
+        .then(() => {
+          wx.switchTab({
+            url: '../my/my',
+          })
+        })
+        .catch(() => {
+          // on cancel
+        });
+    }
   },
   remove_house(){
-    wx.navigateTo({
-      url: '../collection/collection?type='+'remove',
+    if(wx.getStorageSync('_3rd_session')){
+      wx.navigateTo({
+        url: '../collection/collection?type='+'remove',
     })
+    }else{
+      Dialog.confirm({
+        message: '请先进行登录',
+        confirmButtonText:'去登录',
+      })
+        .then(() => {
+          wx.switchTab({
+            url: '../my/my',
+          })
+        })
+        .catch(() => {
+          // on cancel
+        });
+    }
+  },
+  open_fail(){
+    if(wx.getStorageSync('_3rd_session')){
+      wx.navigateTo({
+        url: '../collection/collection?type='+'shenhefail',
+    })
+    }else{
+      Dialog.confirm({
+        message: '请先进行登录',
+        confirmButtonText:'去登录',
+      })
+        .then(() => {
+          wx.switchTab({
+            url: '../my/my',
+          })
+        })
+        .catch(() => {
+          // on cancel
+        });
+    }
   },
   users_info(){
-    wx.navigateTo({
-      url: '../users_info/users_info',
+    if(wx.getStorageSync('_3rd_session')){
+      wx.navigateTo({
+        url: '../users_info/users_info',
     })
+    }else{
+      Dialog.confirm({
+        message: '请先进行登录',
+        confirmButtonText:'去登录',
+      })
+        .then(() => {
+          wx.switchTab({
+            url: '../my/my',
+          })
+        })
+        .catch(() => {
+          // on cancel
+        });
+    }
   },
   my_cicle(){
-    wx.navigateTo({
-      url: '../my_cicle/my_cicle',
+    if(wx.getStorageSync('_3rd_session')){
+      wx.navigateTo({
+        url: '../my_cicle/my_cicle',
     })
+    }else{
+      Dialog.confirm({
+        message: '请先进行登录',
+        confirmButtonText:'去登录',
+      })
+        .then(() => {
+          wx.switchTab({
+            url: '../my/my',
+          })
+        })
+        .catch(() => {
+          // on cancel
+        });
+    }
   },
   user_quit(){
     try {

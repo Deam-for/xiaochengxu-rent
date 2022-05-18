@@ -1,4 +1,4 @@
-
+import query from '../../utils/query'
 import QQMapWX from '../../lib/qqmap-wx-jssdk.js';
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
 import format from '../../utils/util'
@@ -12,9 +12,14 @@ Page({
     value:'',
   },
   onLoad(options) {
-    this.getlocation()
+    if(options.id){
+      this.page_content()
+    }else{
+      this.getlocation()
+    }
   },
   getlocation(){
+    console.log('as');
     let that=this;
     console.log('asd',app.golbalData.location);
     if(app.golbalData.location.length==false){
@@ -33,6 +38,7 @@ Page({
             that.setData({
               location:city
             })
+            that.page_content()
           },
           
         })
@@ -72,34 +78,25 @@ Page({
     })
   },
   onShow(){
+    this.page_content()
+  },
+  page_content(){
     let that=this;
     console.log('12'+app.golbalData.location)
-    wx.request({
-      url: 'http://127.0.0.1:3000/house_info',
-      method:'get',
-      success(res){
-        console.log(res.data);
+    query.requestPromise('/house_info',{location:app.golbalData.location},'post')
+    .then(res=>{
+      console.log(res.data);
         res.data.info.forEach(function(item,index ) {
           item.pic= item.pic.split(',');
           item.pic.splice(3,5)
           item.create_time=format.formatupadte(item.create_time);
         });
-        let data=res.data;
-         res.data.info.forEach(function(item,index){
-           qqMap.geocoder({
-            address:item.city+item.district+item.location,
-            complete:res=>{
-                item.address=res.result.title,
-                item.district=res.result.address_components.district+res.result.address_components.street;
-                that.setData({
-                  house_info:data.info,
-                  banner:data.banner
-                })
-            }
-          })
-          })
-        }
-      })
+        that.setData({
+          house_info:res.data.info,
+          banner:res.data.banner,
+          location:app.golbalData.location
+        })
+    })
   },
   onClassify(e){
     wx.navigateTo({

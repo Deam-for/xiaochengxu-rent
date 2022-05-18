@@ -47,29 +47,21 @@ Page{
   border-radius: 25rpx;
 }
 /* 留言 */
-.comment{
-  border-radius: 20rpx;
-  background-color: #ffffff;
-  margin-top: 30rpx;
-  margin-bottom: 250rpx;
-  padding: 20rpx;
-}
-.comment .item{
-  margin-bottom: 20rpx;
-}
-.comment .comment_item{
-  padding-top: 15rpx;
-  border-top: 1px solid rgb(223, 233, 223);
-}
-.comment .item_top image{
-  margin: 0 20rpx 0 0;
-}
-.contents{
-  margin-left: 20rpx;
-  margin-top: 20rpx;
-}
-.summary{
-  padding: 20rpx;
-  height: 80rpx;
-  font-size: 36rpx;
-}
+/* 评论-回复-回复评论显示区域 */
+.container{  width: 718rpx;  margin-top: 39rpx;  padding-left: 32rpx;}
+.total{  font-size: 24rpx;  color: #999999;   margin-left: 1rpx;}
+.container_inp{  width: 661rpx;  height: 32rpx;  background-color: #F2F2F2;  border-radius: 8rpx;  padding: 17rpx 0rpx 15rpx 25rpx;  margin-top: 24rpx;  margin-bottom: 47rpx  ;}
+.container_place{  font-size: 24rpx;  color: #999999;}
+.container-item{  display: flex;  margin-bottom: 34rpx;  align-items: flex-start;background-color: #ffffff; 
+  margin-top: 10rpx;
+  padding: 10rpx 0 0 12rpx;}
+.item_img{  width: 64rpx;  height: 64rpx;  margin-right: 17rpx;border-radius: 50%;}
+.item_right{  display: inline-block;  width: 636rpx;  border-bottom: 2rpx solid #E5E5E5;  padding-bottom: 40rpx;}
+.right_name{  font-size: 24rpx;  color: #999999;}
+.right_content{  width: 603rpx;  margin-top: 20rpx;}
+.right_content_txt{  font-size: 26rpx;  color: #333333;}
+.right_content_txt2{  font-size: 24rpx;  color: #CCCCCC;  margin-left: 30rpx;}
+.reply{  display: flex;   margin-top: 32rpx;  align-items: flex-start;  }
+.reply_img{  width: 40rpx;  height: 40rpx;  margin-right: 17rpx; border-radius: 50%;}
+.reply_right{  display: inline-block;  width: 546rpx;}
+.quart{height: 100rpx;}

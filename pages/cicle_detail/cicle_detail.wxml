@@ -53,8 +53,8 @@
         <image src="../../image/location.png" class="small_logo"></image>
         <text class="font-normal rent_location_detailed">{{item.location}}</text>
         <view class="flex_row comment">
-          <image src="../../image/yidianzan.png" class="small_logo" bindtap="delete_dianzan" data-id="{{index}}" wx:if="{{item.dianzan}}"></image>
-          <image src="../../image/dianzan.png" class="small_logo" bindtap="dianzan" data-id="{{index}}" wx:else></image>
+          <image src="../../image/yidianzan.png" class="small_logo" catchtap="delete_dianzan" data-id="{{index}}" wx:if="{{item.dianzan}}"></image>
+          <image src="../../image/dianzan.png" class="small_logo" catchtap="dianzan" data-id="{{index}}" wx:else></image>
           <image src="../../image/message.png" class="small_logo"></image>
         </view>
       </view>
@@ -62,6 +62,7 @@
   </block>
 </view>
 <view class="cicle_content no_comment" wx:else>暂时还有人发表帖子，快来当首发吧</view>
+<view class="quart"></view>
 <van-share-sheet
   show="{{ showShare }}"
   title="立即分享给好友"
@@ -70,7 +71,7 @@
   bind:close="onClose"
 />
 <van-tabbar active="{{ active }}" bind:change="onChange">
-  <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item icon="home-o" bindtap="shouye">首页</van-tabbar-item>
   <van-tabbar-item icon="search" bindtap="openpbulish">发布</van-tabbar-item>
-  <van-tabbar-item icon="setting-o">我的</van-tabbar-item>
+  <van-tabbar-item icon="setting-o" bindtap="my">我的</van-tabbar-item>
 </van-tabbar>

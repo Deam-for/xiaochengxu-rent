@@ -40,7 +40,7 @@ Page({
     this.data.content.openid=wx.getStorageSync('_3rd_session')
     let that=this;
     wx.uploadFile({
-      url: 'http://127.0.0.1:3000/publish_rent/cicle_publish',
+      url: '/publish_rent/cicle_publish',
       filePath: this.data.fileList[0].url,
       name: 'img',
       formData: this.data.content,
@@ -49,7 +49,7 @@ Page({
         "Content-Type":"multipart/form-data"
       },
       success(res) {
-        app.uploadOneByOne('http://127.0.0.1:3000/publish_rent/cicle_pic',that.data.fileList,0,0,1,that.data.fileList.length,)
+        app.uploadOneByOne('/publish_rent/cicle_pic',that.data.fileList,0,0,1,that.data.fileList.length,)
         wx.switchTab({
           url: '../cicle/cicle',
         })

@@ -64,7 +64,7 @@ Page({
   },
   submit(){
     wx.request({
-      url: 'http://127.0.0.1:3000/users/users_info',
+      url: '/users/users_info',
       method:'POST',
       data:{
         data:this.data.array,

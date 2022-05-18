@@ -18,7 +18,7 @@
   </block>
 </view>
 <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight}}px;" 
-          class="list" bindscrolltolower="bindDownLoad" bindscrolltoupper="topLoad"  bindscroll="scroll" wx:else>
+          class="list" bindscrolltolower="bindDownLoad" lower-threshold="onlower" bindscroll="scroll" wx:else>
     <view class="booklist" wx:for="{{house_info}}" wx:for-item="item" wx:key="item" data-id="{{item.id}}" catchtap="house_detail">
       <image  class="book-img book-empty" src="http://127.0.0.1:3000/uploads/{{item.pic}}"></image>
       <view class="book-info">

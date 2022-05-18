@@ -5,7 +5,7 @@ Page({
   },
   onLoad(options){
     let that=this;
-   query.requestPromise('http://127.0.0.1:3000/house_detail',{id:this.options.id,
+   query.requestPromise('/house_detail',{id:this.options.id,
    openid:wx.getStorageSync('_3rd_session')},'post').
    then(res=>{
     let data=res.data.data;
@@ -33,7 +33,7 @@ Page({
     data.title=this.data.title;
     data.house_id=this.data.content[0].id;
     wx.uploadFile({
-      url: 'http://127.0.0.1:3000/publish_rent/banner_add',
+      url: '/publish_rent/banner_add',
       filePath: this.data.fileList[0].url,
       name: 'img',
       formData: data,

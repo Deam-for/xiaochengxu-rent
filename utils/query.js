@@ -41,7 +41,7 @@ const requestPromise = (url,data,type) => {
   // 返回一个Promise实例对象 
   return new Promise((resolve, reject) => {
     wx.request({
-      url: url,
+      url:'http://127.0.0.1:3000'+ url,
       data:data,
       method:type,
       success: res => resolve(res)

@@ -12,3 +12,4 @@
   </view>
 </block>
 <view class="type_select_button" bindtap="next_select">下一步</view>
+<van-dialog id="van-dialog" />

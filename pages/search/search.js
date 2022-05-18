@@ -59,7 +59,9 @@ Page({
     });
   },
   openThis(e){
+    console.log(e);
     this.setData({
+      value:this.data.suggestion[e.target.id].title,
       longitude:e.target.dataset.longitude,
       latitude:e.target.dataset.latitude,
       tuijian:!this.data.tuijian,
@@ -69,7 +71,7 @@ Page({
   },
   search(location){
     let that=this;
-    query.requestPromise('http://127.0.0.1:3000/house/house_search',{location,city:this.data.city},'post')
+    query.requestPromise('/house/house_search',{location,city:this.data.city},'post')
     .then(res=>{
        let ending=that.data.latitude+','+that.data.longitude;
        console.log(res.data);
@@ -144,9 +146,12 @@ Page({
 },
   scroll(event){
   //该方法绑定了页面滚动时的事件，我这里记录了当前的position.y的值,为了请求数据之后把页面定位到这里来。
-  console.log(event.detail.scrollTop);
+  // console.log(event.detail.scrollTop);
    this.setData({
        scrollTop : event.detail.scrollTop
    });
 },
+onlower(e){
+  console.log(e);
+}
 })

@@ -21,7 +21,7 @@ Page({
     this.content();
   },
   content(){
-    query.requestPromise('http://127.0.0.1:3000/house/ciclecomment',{id:this.data.id,sign:wx.getStorageSync('_3rd_session')},'post')
+    query.requestPromise('/house/ciclecomment',{id:this.data.id,sign:wx.getStorageSync('_3rd_session')},'post')
     .then(res=>{
       console.log(res.data);
       if(res.data.sign){
@@ -54,7 +54,7 @@ Page({
     console.log(this.data.thumbs);
     let that=this;
     if(this.data.thumbs){
-      query.requestPromise('http://127.0.0.1:3000/house/cicle_quit',{location:app.golbalData.location,sign:wx.getStorageSync('_3rd_session'),city_area:this.data.id},'post')
+      query.requestPromise('/house/cicle_quit',{location:app.golbalData.location,sign:wx.getStorageSync('_3rd_session'),city_area:this.data.id},'post')
     .then(res=>{
       wx.showToast({
         title: '已退出',
@@ -63,7 +63,7 @@ Page({
       that.content()
     })
     }else{
-      query.requestPromise('http://127.0.0.1:3000/house/cicle_join',{location:app.golbalData.location,sign:wx.getStorageSync('_3rd_session'),city_area:this.data.id},'post')
+      query.requestPromise('/house/cicle_join',{location:app.golbalData.location,sign:wx.getStorageSync('_3rd_session'),city_area:this.data.id},'post')
     .then(res=>{
       wx.showToast({
         title: '已加入',
@@ -89,7 +89,7 @@ Page({
     console.log(e.currentTarget.dataset.id);
     let id=e.currentTarget.dataset.id;
     this.data.comment[id].dianzan=!( this.data.comment[id].dianzan);
-    query.requestPromise('http://127.0.0.1:3000/house/dianzan',{sign:wx.getStorageSync('_3rd_session'),id:this.data.comment[id].id},'post').then(res=>{
+    query.requestPromise('/house/dianzan',{sign:wx.getStorageSync('_3rd_session'),id:this.data.comment[id].id},'post').then(res=>{
 
     })
     this.setData({
@@ -99,7 +99,7 @@ Page({
   delete_dianzan(e){
     let id=e.currentTarget.dataset.id;
     this.data.comment[id].dianzan=!( this.data.comment[id].dianzan);
-    query.requestPromise('http://127.0.0.1:3000/house/delete_dianzan',{sign:wx.getStorageSync('_3rd_session'),id:this.data.comment[id].id},'post').then(res=>{
+    query.requestPromise('/house/delete_dianzan',{sign:wx.getStorageSync('_3rd_session'),id:this.data.comment[id].id},'post').then(res=>{
 
     })
     this.setData({
@@ -109,6 +109,16 @@ Page({
   comment_detail(e){
     wx.navigateTo({
       url: `../comment_detail/comment_detail?id=${e.currentTarget.dataset.id}`,
+    })
+  },
+  shouye(){
+    wx.switchTab({
+      url: '../index/index',
+    })
+  },
+  my(){
+    wx.switchTab({
+      url: '../my/my',
     })
   }
 })

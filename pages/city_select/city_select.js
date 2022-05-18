@@ -82,7 +82,7 @@ Page({
       cityName:e.currentTarget.dataset.val
     });
     wx.switchTab({
-      url: '../index/index',
+      url: '../index/index?id='+'as',
     })
   },
   getAuthorization(){

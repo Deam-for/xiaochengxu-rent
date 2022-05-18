@@ -18,3 +18,14 @@ page{
   background-color: #ffffff;
   margin-left: 20rpx;
 }
+
+/* 房东身份查验 */
+.fangdong{
+  margin-top: 15rpx;
+  padding: 15rpx 0 0 15rpx;
+  background-color: #ffffff;
+}
+.fangdong_text{
+  font-size: 34rpx;
+  margin-bottom: 15rpx;
+}

@@ -90,3 +90,6 @@ Page{
   border-radius: 20rpx;
   font-size: 35rpx;
 }
+.quart{
+  height: 100rpx;
+}

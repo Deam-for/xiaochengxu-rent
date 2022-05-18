@@ -9,6 +9,9 @@
 }
 .search{
   background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 .city_select{
   margin-left: 20rpx;
@@ -19,13 +22,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 110rpx;
 }
 .tuijian_item{
   width: 100%;
   padding:8px 0 8px 55%;
   border-bottom: 1px solid rgb(238, 232, 232);
 }
+.list{
+  margin-top: 110rpx;
+  height: 100%;
+}
 .booklist{
+  height: 200rpx;
   display: flex;
   flex-direction: row;
 }

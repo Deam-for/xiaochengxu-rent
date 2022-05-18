@@ -77,7 +77,7 @@
     <text>留言</text>
   </view>
   <view class="bottom_content flex_row">
-    <button class="bottom_button" bindtap="relation_type">联系ta</button>
+    <view class="bottom_button" bindtap="relation_type">联系ta</view>
   </view>
 </view>
 <van-action-sheet

@@ -4,7 +4,7 @@ Page({
 
   },
   onLoad(){
-    query.requestPromise('http://127.0.0.1:3000/users/my_cicle',{sign:wx.getStorageSync('_3rd_session')},'post')
+    query.requestPromise('/users/my_cicle',{sign:wx.getStorageSync('_3rd_session')},'post')
     .then(res=>{
       console.log(res.data);
       res.data.cicle.forEach(item=>{

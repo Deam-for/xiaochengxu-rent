@@ -99,6 +99,12 @@ clear-both {
   padding-bottom: 15rpx;
   margin-bottom: 15rpx;
 }
+.shenhefail{
+  background-color: #ffffff;
+  padding-top: 20rpx;
+  padding-bottom: 15rpx;
+  margin: 0 0 15rpx 20rpx;
+}
 .item{
   background-color: #ffffff;
 }
@@ -109,4 +115,16 @@ clear-both {
 .rent_money{
   margin-top: 15rpx;
   margin-left: 10rpx;
+}
+.collection_delete{
+  justify-content: space-around;
+  align-items: center;
+}
+.collection_button{
+  font-size: 28rpx;
+  border-radius: 30rpx;
+  background: #4cc771;
+  width: 120rpx;
+  height: 50rpx;
+  padding: 10rpx 0 0 8rpx;
 }

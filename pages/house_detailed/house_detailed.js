@@ -25,6 +25,7 @@ Page({
   },
   onLoad(e){
     let id=this.options.id;
+    this.setData({id})
     let that=this;
     let day=new Date().getDate()+2;
     let month=new Date().getMonth()+1;
@@ -58,6 +59,13 @@ Page({
         },
       ],
     })
+    this.page_content(id)
+  },
+  onShow(){
+    this.page_content(this.data.id)
+  },
+  page_content(id){
+    let that=this
     wx.request({
       url: 'http://127.0.0.1:3000/house_detail',
       method:'POST',
@@ -195,7 +203,7 @@ Page({
     this.setData({ schedule: false })
   },
   onClose() {
-    this.setData({ schedule: false })
+    this.setData({ show: false })
   },
   onCancel(){
     this.setData({ schedule: false })

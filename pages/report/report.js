@@ -35,7 +35,7 @@ Page({
     console.log(this.data.content);
     let that=this;
     wx.uploadFile({
-      url: 'http://127.0.0.1:3000/publish_rent/report',
+      url: '/publish_rent/report',
       filePath: this.data.fileList[0].url,
       name: 'img',
       formData: this.data.content,
@@ -45,7 +45,7 @@ Page({
       },
       success(res) {
         console.log(that.data.fileList.length);
-        app.uploadOneByOne('http://127.0.0.1:3000/publish_rent/report_pic',that.data.fileList,0,0,1,that.data.fileList.length,)
+        app.uploadOneByOne('/publish_rent/report_pic',that.data.fileList,0,0,1,that.data.fileList.length,)
         wx.switchTab({
           url: '../cicle/cicle',
         })

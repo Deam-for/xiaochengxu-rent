@@ -11,7 +11,7 @@ Page({
   onShow(){
     let that=this
     console.log(app.golbalData.location);
-    query.requestPromise('http://127.0.0.1:3000/house/cicle',{location:app.golbalData.location},'post')
+    query.requestPromise('/house/cicle',{location:app.golbalData.location},'post')
     .then(res=>{
       console.log(res.data)
       res.data.forEach(item=>{

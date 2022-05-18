@@ -17,7 +17,7 @@ App({
   //多图片上传
   uploadOneByOne(url, imgPaths, successUp, failUp, count, length) {
     var that = this;
-    console.log(url);
+    console.log(imgPaths);
     wx.uploadFile({
     url: url, //上传地址地址
     filePath: imgPaths[count].url,

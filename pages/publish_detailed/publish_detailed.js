@@ -9,7 +9,8 @@ Page({
     fileList: [],
     content:{"title":'',"money":'',"location":"","restrict":'','decrible':'','type':''},
     type:'',
-    msg:{}
+    msg:{},
+    fangdong:[]
   },
 
   /**
@@ -17,9 +18,13 @@ Page({
    */
   onLoad: function (options) {
     let type=options.type;
-    console.log(type)
+    console.log(type);
+    let sign=2
+    if(type=='房东直租'){
+      sign=1
+    }
     this.data.content.type=type
-    this.setData({content:this.data.content})
+    this.setData({content:this.data.content,sign})
   },
   openlocation:function(){  //选择位置
     let that=this;
@@ -54,13 +59,23 @@ Page({
     this.setData({content:this.data.content})
   },
   afterRead(event) {
-    const { file } = event.detail;
+    let { file } = event.detail;
     let pic=this.data.fileList.push({url:file.url,deletable: true});
     this.data.msg.pic='';
     this.setData({
       fileList:this.data.fileList,
       msg:this.data.msg
     })
+  },
+  fangdong(event){
+    let { file } = event.detail;
+    this.data.fangdong.push({url:file.url,deletable: true});
+    this.setData({
+      fangdong:this.data.fangdong
+    })
+  },
+  contintue(){
+    this.setData({sign:2})
   },
   delete_pic(event){
     this.data.fileList.splice(event.detail.index,1);
@@ -121,7 +136,10 @@ Page({
         },
         success(res) {
           console.log(that.data.fileList.length);
-          app.uploadOneByOne('http://127.0.0.1:3000/publish_rent/pic',that.data.fileList,0,0,1,that.data.fileList.length,)
+          if(that.data.content.type=='房东直租'){
+            app.uploadOneByOne('http://127.0.0.1:3000/publish_rent/pic_check',that.data.fangdong,0,0,0,that.data.fangdong.length)
+          }
+          app.uploadOneByOne('http://127.0.0.1:3000/publish_rent/pic',that.data.fileList,0,0,1,that.data.fileList.length)
           wx.switchTab({
             url: '../index/index',
           })

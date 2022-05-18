@@ -111,10 +111,15 @@ page{
 
 }
 .bottom_button{
-  border-radius: 0;
-  background-color: #7232dd;
-  width: 180rpx;
-  height: 100rpx;
+  background: linear-gradient(33deg, #c4e759, #06d6a0);
+  /* width: 180rpx;
+  height: 100rpx; */
+  border-radius: 40rpx;
+    padding: 20rpx 70rpx;
+    box-sizing: border-box;
+    font-size: 25rpx;
+    font-weight: bold;
+    color: white;
 }
 .bottom_button1{
   width: 200rpx;

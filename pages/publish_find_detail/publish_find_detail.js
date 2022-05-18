@@ -47,7 +47,7 @@ Page({
     console.log(this.data.content);
     this.data.content.session=wx.getStorageSync('_3rd_session');
     wx.uploadFile({
-      url: 'http://127.0.0.1:3000/publish_rent/publish',
+      url: '/publish_rent/publish',
       filePath: this.data.fileList[0].url,
       name: 'img',
       formData: this.data.content,
@@ -57,7 +57,7 @@ Page({
       },
       success(res) {
         console.log(that.data.fileList.length);
-        app.uploadOneByOne('http://127.0.0.1:3000/publish_rent/pic',that.data.fileList,0,0,1,that.data.fileList.length,)
+        app.uploadOneByOne('/publish_rent/pic',that.data.fileList,0,0,1,that.data.fileList.length,)
         wx.switchTab({
           url: '../index/index',
         })

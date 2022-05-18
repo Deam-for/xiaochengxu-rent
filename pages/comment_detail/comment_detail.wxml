@@ -20,30 +20,38 @@
 
 <!-- 留言 -->
 <!-- 留言 -->
-<view class="comment">
-<view wx:if="{{!comment.length}}" class="summary">暂时还没有人留言，快来抢沙发吧</view>
-  <block wx:for="{{comment}}" wx:for-item="item" wx:key="index">
-    <view class="{{index>=1?'comment_item':''}} item flex_column">
-      <view class="item_top flex_row" >
-        <image src="{{item.avatar_url}}" class="avatar avatar_size"></image>
-        <view >{{item.nickname}}</view>
+<view class="container-item" wx:for="{{comment}}" wx:for-item="list" wx:key="key">
+      <image class="item_img" src="{{list.avatar_url}}"></image>
+      <view class="item_right">
+        <view class="right_name">{{list.nickname}}</view>
+        <view class="right_content">
+          <text class="right_content_txt" bindtap='replyComment' data-type="1" data-name='{{list.nickname}}' data-cid='{{list.id}}'data-pid="{{content.id}}" >{{list.content}}</text>
+          <!-- 回复评论 -->
+          <!-- 判断回复列表数据中的parent_id和评论列表数据的comment_id是否相等 相等就显示 不等就不显示 -->          
+          <view class="reply" wx:for="{{reply_content}}" wx:for-item="list2" wx:key="list2" wx:if="{{list2.parent_id == list.id}}">
+            <image class="reply_img" src="{{list2.avatar_url}}"></image>
+            <view class="reply_right">
+              <view class="right_name">{{list2.name}}</view>
+              <text wx:if="{{list2.reply_name == ''}}" class="right_content_txt" bindtap='replyComment' data-type="2" data-name='{{list2.comment}}' data-cid='{{list2.comment_id}}' data-pid="{{list2.parent_id}}">{{list2.comment_text}}</text>
+              <text wx:if="{{list2.reply_name != ''}}" bindtap='replyComment' data-type="2" data-name='{{list2.name}}' data-cid='{{list.id}}' data-pid="{{content.id}}" class="right_content_txt">回复 <text class="right_name">{{list2.reply_name}}：</text>{{list2.comment_text}}</text>
+              <text class="right_content_txt2">{{list2.comment}}</text>
+            </view>
+          </view>
+        </view>
       </view>
-      <view class="contents">{{item.content}}</view>
-    </view>
-  </block>
-</view>
-
+    </view>  
+    <view class="quart"></view>
 <!-- 底部区域 -->
 <view class="bottom_box  flex_row">
-  <view class="flex_inline bottom_box_collect" bindtap="comment">
-    <input placeholder="评论" class="bottom_input"/>
+  <view class="flex_inline bottom_box_collect" >
+    <input class="bottom_input" confirm-type="send"  placeholder="{{ placeholder }}" value="{{ comment_text }}" focus="{{ focus }}" bindblur="blur" bindconfirm="confirm"/>
   </view>
   <view class="flex_inline bottom_box_collect" bindtap="collection">
     <image src="../../image/collectioned.png" class="small_logo" wx:if="{{collection==true}}"></image>
     <image src="../../image/collect.png" class="small_logo" wx:else></image>
     <text>收藏</text>
   </view>
-  <view class="flex_inline bottom_box_collect">
+  <view class="flex_inline bottom_box_collect" bindtap="comment">
     <image src="../../image/message.png" class="small_logo"></image>
     <text>留言</text>
   </view>

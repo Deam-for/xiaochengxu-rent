@@ -15,7 +15,7 @@ Page({
   },
   submit(){
     this.data.content.sign=wx.getStorageSync('_3rd_session');
-    query.requestPromise('http://127.0.0.1:3000/users/publish_comment',{data:this.data.content},'post')
+    query.requestPromise('/users/publish_comment',{data:this.data.content},'post')
     .then(res=>{
       if(res.data==200){
         wx.navigateBack({

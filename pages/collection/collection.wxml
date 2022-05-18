@@ -1,11 +1,13 @@
 <scroll-view class="screen-box " scroll-x="true">
   <view class="screen {{activeNum==1?'active':''}}" id="screen1" bindtap="changeTab" data-id="1">已发布</view>
   <view class="screen {{activeNum==2?'active':''}}" id="scanner2" bindtap="changeTab" data-id="2">已收藏</view>
-  <view class="screen {{activeNum==3?'active':''}}" id="scanner3" bindtap="changeTab" data-id="3">已浏览</view>
+  <view class="screen {{activeNum==4?'active':''}}" id="scanner3" bindtap="changeTab" data-id="4">审核失败</view>
+  <view class="screen {{activeNum==3?'active':''}}" id="scanner3" bindtap="changeTab" data-id="3">已下架</view>
   <view class="clear-both"></view>
 </scroll-view>
 
-<view class="restrict" wx:if="{{activeNum==1}}">
+<van-empty description="暂无数据" wx:if="{{collection_content.length==0}}"/>
+<view class="restrict" wx:if="{{activeNum==1||activeNum==4}}">
   <view class="flex_column" wx:for="{{collection_content}}" wx:for-item="item" wx:key="id" data-id="{{item.id}}" catchtap="viewhouseDetail">
     <view class="flex_row item">
       <image class="book-img book-empty" src="http://127.0.0.1:3000/uploads/{{item.pic}}"></image>
@@ -20,16 +22,20 @@
             <image src="../../image/location.png" class="small_logo"></image>
             <text class="house_content">{{item.district+item.location}}</text>
           </view>
-          <view class="rent_money">
+          <view class="rent_money collection_delete flex_row">
             <text class="red ">{{item.money}}元/月</text>
+            <view wx:if="{{activeNum==4}}" class="collection_button" catchtap="shangjia" data-id="{{item.id}}">重新上架</view>
           </view>
         </view >
       </view>
     </view>
     </view>
-    <view class="flex_row item_bottom">
+    <view class="flex_row item_bottom" wx:if="{{activeNum==1}}">
       <view class="button tuiguang" catchtap="promote"  data-id="{{item.id}}">房源推广</view>
       <view class="button white" catchtap="remove_house" data-id="{{item.id}}">下架</view>
+    </view>
+    <view class="flex_row shenhefail" wx:if="{{activeNum==4}}">
+      <view>失败原因：{{item.remark}}</view>
     </view>
   </view>
 </view>
@@ -39,7 +45,7 @@
     <image class="book-img book-empty" src="http://127.0.0.1:3000/uploads/{{item.pic}}"></image>
     <view class="book-info">
       <view class="flex_row flex_inline">
-        <view class="rent_type font-small">转租</view>
+        <view class="rent_type font-small">{{item.type}}</view>
         <text class="house_content">{{item.title}}</text>
       </view>
       <view class="flex_row flex_inline">
@@ -48,11 +54,12 @@
             <image src="../../image/location.png" class="small_logo"></image>
             <text class="house_content">{{item.district+item.location}}</text>
           </view>
-          <view >
+          <view class="flex_row collection_delete">
             <text class="red">{{item.money}}元/月</text>
+            <view wx:if="{{activeNum==2}}" class="collection_button" catchtap="collection" data-id="{{item.id}}">取消收藏</view>
+            <view wx:if="{{activeNum==3||activeNum==4}}" class="collection_button" catchtap="shangjia" data-id="{{item.id}}">重新上架</view>
           </view>
         </view >
-        <view class="button"  wx:if="{{activeNum==1}}" catchtap="remove_house" data-id="{{item.id}}">下架</view>
       </view>
     </view>
   </view>

@@ -1,5 +1,6 @@
 
-<view class="restrict">
+<van-empty description="无房源数据" wx:if="{{classify_content.length==0}}"/>
+<view class="restrict" wx:else>
   <view class="booklist" wx:for="{{classify_content}}" wx:for-item="item" wx:key="id" data-id="{{item.id}}" catchtap="house_detail">
     <image  class="book-img book-empty" src="http://127.0.0.1:3000/uploads/{{item.pic}}"></image>
     <view class="book-info">

@@ -1,3 +1,4 @@
+import query from '../../utils/query'
 const app=getApp();
 Page({
   data:{
@@ -11,30 +12,23 @@ Page({
     let id=options.id;
     let that=this;
     console.log(id);
-    wx.request({
-      url: 'http://127.0.0.1:3000/landlord/houseinfo_detail',
-      method:'POST',
-      data:{
-        id:id,
-        openid:wx.getStorageSync('_3rd_session')
-      },
-      success(res){
-        res.data.forEach(function(item,index ) {
-          item.pic= item.pic.split(',');
-        });
-        if(res.data[0].restricts=="男"){
-          that.data.index=2
-        }else if(res.data[0].restricts=="女"){
-          that.data.index=1
-        }
-        res.data[0].location=res.data[0].district+res.data[0].location
-        console.log(that.data.index);
-        that.setData({
-          content:res.data[0],
-          index:that.data.index
-        })
-        console.log(that.data.content);
+    query.requestPromise('/landlord/houseinfo_detail',{id:id,openid:wx.getStorageSync('_3rd_session')},'post')
+    .then(res=>{
+      res.data.forEach(function(item,index ) {
+        item.pic= item.pic.split(',');
+      });
+      if(res.data[0].restricts=="男"){
+        that.data.index=2
+      }else if(res.data[0].restricts=="女"){
+        that.data.index=1
       }
+      res.data[0].location=res.data[0].district+res.data[0].location
+      console.log(that.data.index);
+      that.setData({
+        content:res.data[0],
+        index:that.data.index
+      })
+      console.log(that.data.content);
     })
   },
   restrict(){
@@ -53,9 +47,16 @@ Page({
     let that=this;
     wx.chooseLocation({
       success:function(res){
-        that.data.content.location=res.address;
-        that.setData({
-          content:that.data.content
+        query.location(res.address).then(res=>{
+          that.data.content.city=res.result.address_components.city;
+          that.data.content.province=res.result.address_components.province;
+          that.data.content.district=res.result.address_components.district;
+          that.data.content.location=res.result.address_components.street+res.result.title;
+          that.setData({
+            content:that.data.content,
+            location:res.result.address_components.district+res.result.address_components.street+res.result.title,
+            msg:that.data.msg
+          })
         })
       }
     })

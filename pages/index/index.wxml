@@ -30,15 +30,16 @@
 <!-- 专属推荐 -->
 <view class="index_recommend background_color">
   <swiper  indicator-dots="true"autoplay="true" interval="3000" duration="1000">
-    <block wx:for="{{banner}}" wx:for-item="item"  wx:key="index">
+    <block wx:for="{{banner}}" wx:for-item="item"  wx:key="index" >
       <swiper-item>
-        <image src="{{item.img_url}}" class="img-item"></image>
+        <image src="{{item.img_url}}" class="img-item" bindtap="house_detail" data-id="{{item.house_id}}"></image>
       </swiper-item>
     </block>
   </swiper>
 </view>
 <!-- 热门推荐 -->
-<view class="background_color margin_top border-radius rent_content">
+<van-empty description="无房源数据" wx:if="{{house_info.length==0}}"/>
+<view class="background_color margin_top border-radius rent_content" wx:else>
   <block wx:for="{{house_info}}"wx:for-item="item" wx:key="index">
     <view bindtap="house_detail" data-id="{{item.id}}">
       <view class="flex_row flex_inline">
@@ -63,7 +64,7 @@
       </view>
       <view class="rent_location flex_row">
         <image src="../../image/location.png" class="small_logo"></image>
-        <text class="font-normal rent_location_detailed">{{item.address}}</text>
+        <text class="font-normal rent_location_detailed">{{item.location}}</text>
         <text class="font-normal rent_location_simple">{{item.district}}</text>
       </view>
     </view>
